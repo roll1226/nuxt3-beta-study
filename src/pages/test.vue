@@ -23,6 +23,7 @@ export default defineComponent({
   head: {
     title: "My Page",
   },
+
   setup() {
     const todos = ref<ToDo[]>([
       {
