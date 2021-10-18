@@ -3,3 +3,53 @@
     <h1>ホゲ</h1>
   </div>
 </template>
+
+<script lang="ts">
+type ToDo = {
+  done: boolean;
+  title: string;
+};
+
+export default defineComponent({
+  head: {
+    title: "My Page",
+  },
+
+  setup() {
+    const todos = ref<ToDo[]>([
+      {
+        done: false,
+        title: "これはやることです",
+      },
+      {
+        done: true,
+        title: "二つ目のやること",
+      },
+      {
+        done: false,
+        title: "三つ目のやること",
+      },
+    ]);
+    const newToDoTitle = ref<string>("");
+    const add = () => {
+      todos.value.push({
+        done: false,
+        title: newToDoTitle.value,
+      });
+      newToDoTitle.value = "";
+    };
+    const remove = (index: number) => {
+      todos.value.splice(index, 1);
+    };
+
+    return {
+      todos,
+      newToDoTitle,
+      add,
+      remove,
+    };
+  },
+});
+</script>
+
+<style lang="scss" scoped></style>
