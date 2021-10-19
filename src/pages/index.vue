@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="hoge">
     <h1>ホゲ</h1>
   </div>
 </template>
@@ -52,4 +52,10 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.hoge {
+  h1 {
+    color: #f00;
+  }
+}
+</style>
