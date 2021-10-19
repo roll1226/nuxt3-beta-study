@@ -1,6 +1,16 @@
 <template>
   <div class="hoge">
     <h1>ホゲ</h1>
+    <week-timetable-card-component
+      :timetable="[
+        {
+          title: 'ほげ',
+          id: '123123',
+          password: '321321',
+        },
+      ]"
+    />
+    <test-component />
   </div>
 </template>
 

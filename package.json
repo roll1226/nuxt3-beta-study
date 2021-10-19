@@ -6,12 +6,16 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/composition-api": "^1.2.4",
+    "babel-preset-vca-jsx": "^0.3.6",
     "fibers": "^5.0.0",
     "nuxt3": "latest",
     "sass": "^1.43.2",
     "sass-loader": "10"
   },
   "dependencies": {
-    "modern-css-reset": "^1.4.0"
+    "modern-css-reset": "^1.4.0",
+    "remove": "^0.1.5"
   }
 }
