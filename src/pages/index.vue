@@ -1,20 +1,4 @@
-<template>
-  <div class="hoge">
-    <h1>ホゲ</h1>
-    <week-timetable-card-component
-      :timetable="[
-        {
-          title: 'ほげ',
-          id: '123123',
-          password: '321321',
-        },
-      ]"
-    />
-    <test-component />
-  </div>
-</template>
-
-<script lang="ts">
+<script lang="tsx">
 type ToDo = {
   done: boolean;
   title: string;
@@ -52,12 +36,29 @@ export default defineComponent({
       todos.value.splice(index, 1);
     };
 
-    return {
-      todos,
-      newToDoTitle,
-      add,
-      remove,
-    };
+    // return {
+    //   todos,
+    //   newToDoTitle,
+    //   add,
+    //   remove,
+    // };
+    return () => (
+      <>
+        <div class="hoge">
+          <h1>ホゲ</h1>
+          <week-timetable-card-component
+            timetable={[
+              {
+                title: "ほげ",
+                id: "123123",
+                password: "321321",
+              },
+            ]}
+          />
+          <test-component />
+        </div>
+      </>
+    );
   },
 });
 </script>
