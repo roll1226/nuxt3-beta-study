@@ -112,12 +112,14 @@ export default class Pixelize {
       clstsPrev = JSON.parse(JSON.stringify(clsts));
       count++;
     }
+
     // クラスタリング結果を反映
     for (var i = 0; i < height; i++) {
       for (var j = 0; j < width; j++) {
         var clst = clsts[j + i * width];
         for (var k = 0; k < 3; k++) {
           dst[(j + i * width) * 4 + k] = centroids[clst][k];
+
           // 透明度は維持
           dst[(j + i * width) * 4 + 3] = src[(j + i * width) * 4 + 3];
         }
@@ -144,10 +146,12 @@ export default class Pixelize {
     const gridStep = 10; // グリッド線をgridStepごとに太くする
     const newWidth = inputImageData.width * pixelSize;
     const newHeight = inputImageData.height * pixelSize;
+
     const outputImageData = new ImageData(
       inputImageData.width * pixelSize,
       inputImageData.height * pixelSize
     );
+
     // 拡大
     for (var i = 0; i < newHeight; i++) {
       for (var j = 0; j < newWidth; j++) {
@@ -159,6 +163,7 @@ export default class Pixelize {
         }
       }
     }
+
     // グリッド線
     if (grid) {
       for (var i = 0; i < newHeight; i++) {
@@ -172,11 +177,34 @@ export default class Pixelize {
             for (var k = 0; k < 3; k++) {
               outputImageData.data[(j + i * newWidth) * 4 + k] = vmax;
             }
+
             outputImageData.data[(j + i * newWidth) * 4 + k] = vmax;
           }
         }
       }
     }
     return outputImageData;
+  }
+
+  /**
+   * imageDataからblobに変換
+   *
+   * @static
+   * @param {string} dataurl
+   * @return {*}
+   * @memberof Pixelize
+   */
+  public static dataURLtoBlob(dataurl: string) {
+    var arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = window.atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new Blob([u8arr], { type: mime });
   }
 }

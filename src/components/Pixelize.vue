@@ -11,10 +11,11 @@ export default defineComponent({
     const heightBefore = ref<number | null>(null);
     const widthAfter = ref<number>(100);
     const heightAfter = ref<number>(null);
-    const colors = ref<number>(3);
-    const pixelSize = ref<number>(10);
-    const grid = ref<boolean>(true);
+    const colors = ref<number>(100);
+    const pixelSize = ref<number>(15);
+    const grid = ref<boolean>(false);
     const image = ref<CanvasImageSource | null>(null);
+    const imageUrl = ref<string>("");
 
     const upload = (event: Event) => {
       let img = null;
@@ -90,6 +91,10 @@ export default defineComponent({
         );
 
         context.putImageData(outputImageData, 0, 0);
+
+        imageUrl.value = URL.createObjectURL(
+          Pixelize.dataURLtoBlob(context.canvas.toDataURL())
+        );
       }
 
       e.preventDefault();
@@ -169,6 +174,14 @@ export default defineComponent({
                 <button type="submit">Pixelize!!!</button>
               </p>
             </form>
+
+            {imageUrl && (
+              <>
+                <a href={imageUrl.value} target="_blank">
+                  {imageUrl.value}
+                </a>
+              </>
+            )}
 
             <canvas id="preview-after"></canvas>
           </div>
