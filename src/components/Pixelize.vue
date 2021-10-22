@@ -175,7 +175,7 @@ export default defineComponent({
               </p>
             </form>
 
-            {imageUrl && (
+            {imageUrl.value && (
               <>
                 <a href={imageUrl.value} target="_blank">
                   {imageUrl.value}
