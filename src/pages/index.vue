@@ -1,4 +1,6 @@
 <script lang="tsx">
+import PixelizeVue from "../components/Pixelize.vue";
+
 type ToDo = {
   done: boolean;
   title: string;
@@ -56,6 +58,7 @@ export default defineComponent({
             ]}
           />
           <test-component />
+          <PixelizeVue />
         </div>
       </>
     );
