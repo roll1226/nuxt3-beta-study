@@ -193,7 +193,17 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-h1 {
-  color: #42b983;
+.pixelize {
+  h1 {
+    color: #42b983;
+  }
+
+  #preview-before {
+    width: 500px;
+  }
+
+  #preview-after {
+    width: 500px;
+  }
 }
 </style>
